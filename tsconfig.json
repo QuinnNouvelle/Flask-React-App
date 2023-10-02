@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "typeRoots": [".src/@types", "./node_modules/@types"],
+    "module": "es6",
+    "target": "es5",
+    "jsx": "react",
+    "allowJs": true,
+    "moduleResolution": "node"
+  },
+  "include": [
+    "src/**/**/*",
+    "src/assets/nouvelletech.svg"
+  ],
+  "exclude": ["node_modules"]
+}

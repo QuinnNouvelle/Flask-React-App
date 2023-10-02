@@ -1,0 +1,39 @@
+@import "../../styles/variables.scss";
+@import "../../styles/responsive.scss";
+
+.login_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    
+    
+}
+.login_grid {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-rows: minmax(75px, auto);
+    text-align: center;
+    
+}
+.gridItem{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+.loginButton{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+}
+.header {
+    grid-column: span 1;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+

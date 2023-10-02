@@ -1,0 +1,1 @@
+For SVG Functional React Component Generation go here https://react-svgr.com/playground/
