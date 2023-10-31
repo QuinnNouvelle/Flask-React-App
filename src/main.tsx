@@ -1,5 +1,5 @@
 import {createRoot} from 'react-dom/client'
-import App from './App.js'
+import App from './App'
 import { ThemeContextProvider } from './styles/themes/mainTheme/ThemeContextProvider.js'
 import * as React from 'react'
 

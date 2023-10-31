@@ -7,10 +7,15 @@ import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import AppsIcon from '@mui/icons-material/Apps';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import SettingsIcon from '@mui/icons-material/Settings';
+import { IconButton, Box } from '@mui/material';
 import MainLogo from '../../assets/MainLogo';
 import { useTheme } from '@mui/material/styles';
 import { red } from "@mui/material/colors"
 import { useNavigate } from "react-router-dom";
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import { Button } from '@mui/material';
+
 
 interface IProps {
   name: string
@@ -20,9 +25,22 @@ interface IProps {
 const Navbar = (props: IProps) => {
   const { name } = props
   const navigate = useNavigate()
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
 
   const theme = useTheme();
   console.log(theme.palette.primary.main )
+
+  const openMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+    console.log("Open Menu Trigger")
+  };
+  const closeMenu = () => {
+    setAnchorEl(null);
+    console.log(`Anchor El: ${anchorEl}`)
+    console.log("Close Menu Trigger")
+    
+  };
 
   const logout = async () => {
     const response = await fetch('/logout', {
@@ -56,9 +74,33 @@ const Navbar = (props: IProps) => {
             alt=""
           />
           <span>{name}</span>
-        </div>
+        </div>   
+        <div>
+      <Button
+        aria-controls={open ? 'basic-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={openMenu}
+      >
         <SettingsIcon />
+      </Button>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={closeMenu}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+      >
+        <MenuItem onClick={closeMenu}>Profile</MenuItem>
+        <MenuItem onClick={closeMenu}>My account</MenuItem>
+        <MenuItem onClick={closeMenu}>Logout</MenuItem>
+      </Menu>
+    </div>
+
         <NightModeToggle />
+        
       </div>
     </div>
   );

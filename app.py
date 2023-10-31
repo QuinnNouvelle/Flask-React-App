@@ -16,11 +16,10 @@ app.register_blueprint(auth)
 db.init_app(app)
 migrate.init_app(app, db)
 
-
 server_session = Session(app)
 
 @app.route('/overview')
-def index():
+def overview():
     # session is the redis server configured in config.py  Im attempting to grab a session cookie if the client has one
     if session.get(f'user_id') == None:
         return redirect('/')
@@ -28,6 +27,10 @@ def index():
         return render_template('index.html')
 
         
+@app.route('/stripeTest')
+def stripeTest():
+    return render_template('test.html')
+
 @app.errorhandler(404)
 def not_found(e):
     return render_template('index.html'), 404

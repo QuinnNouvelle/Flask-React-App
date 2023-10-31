@@ -23,6 +23,8 @@ redis-cli
 ```
 If you cannot connect to the server make sure your firewalls allow tcp from ip 127.0.0.1 port 6379
 
+# First Time Configuration
+
 # Initialization
 
 First run the command 
